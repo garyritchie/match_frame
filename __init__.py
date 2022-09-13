@@ -1,13 +1,14 @@
 import bpy
+import math
 
 bl_info = {
     "name": "Match Frame",
     "author": "tintwotin",
-    "version": (0, 1, 0),
+    "version": (0, 1, 1),
     "blender": (2, 90, 0),
     "description": "Jump to a matching frame in a different scene",
     "location": "Sequencer > Strip > Match Frame",
-    "tracker_url": "",
+    "tracker_url": "https://github.com/tin2tin/match_frame",
     "category": "Sequencer",
 }
 
@@ -84,7 +85,7 @@ class SEQUENCER_OT_match_frame(bpy.types.Operator):
                         print("frame_current " + str(frame_current))
                         win = bpy.context.window_manager.windows[0]
                         win.scene = bpy.data.scenes[sce.name]
-                        bpy.context.scene.frame_current = frame_current
+                        bpy.context.scene.frame_current = math.ceil(frame_current)
 
                         if camera_name:
                             for area in bpy.context.screen.areas:
